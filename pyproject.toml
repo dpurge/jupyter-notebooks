@@ -1,0 +1,31 @@
+[project]
+name = "jupyter-notebooks"
+version = "0.1.0"
+description = "Experiments in notebooks"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.11.0",
+    "opencv-python>=4.13.0.92",
+    "pdf2image>=1.17.0",
+    "pillow>=12.2.0",
+    "pytesseract>=0.3.13",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "jupyterlab",
+    "pytest",
+    "python-dotenv>=1.2.2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[project.scripts]
+main = "src.main:main"
+notebook = "src.notebook:main"
