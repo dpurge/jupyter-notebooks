@@ -126,7 +126,12 @@ def draw_boxes(img, boxes, color=(36, 255, 12), width=2):
         x, y, w, h = box
         cv2.rectangle(img, (x,y), (x+w, y+h), color, width)
 
-def get_boxes(img, blurring_box=(7, 7), structuring_box = (3, 13), iterations=1, filter=lambda b: True):
+def get_boxes(img,
+    blurring_box=(7, 7),
+    structuring_box = (3, 13),
+    iterations=1,
+    filter=lambda box: True
+):
     new_img = img.copy()
     gray_img = cv2.cvtColor(new_img, cv2.COLOR_BGR2GRAY)
     blur_img = cv2.GaussianBlur(gray_img, blurring_box, 0)
